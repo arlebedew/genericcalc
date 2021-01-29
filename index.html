@@ -22,8 +22,13 @@
 	}
 
 	.info{
-		display: grid;
+	    display: grid;
 	    justify-content: center;
+	    position: fixed;
+	    background-color: #dcd9d9;
+	    width: 100%;
+	    border-bottom: 2px solid black;
+	    top: 0;
 	    word-break: break-all;
 	    grid-template-rows: 70% 30%;
 	    grid-template-columns: 20% 15% 15% 10% 10% 10% 10% 10%;
@@ -39,6 +44,7 @@
 		display: flex;
 	    flex-direction: column;
 	    margin: auto;
+	    margin-top: 8rem;
 	}
 
 	.generation{
@@ -116,6 +122,10 @@
 </style>
 
 <body>
+
+	<div id="in-process">
+		<h4>In process...</h4>
+	</div>
 
 	<div class="info" >
 
