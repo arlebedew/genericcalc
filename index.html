@@ -19,6 +19,7 @@
 	body{
 		height: 100%;
 		width:100%;
+		margin: 0;
 	}
 
 	.info{
@@ -30,7 +31,7 @@
 	    border-bottom: 2px solid black;
 	    top: 0;
 	    word-break: break-all;
-	    grid-template-rows: 70% 30%;
+	    grid-template-rows: 60% 40%;
 	    grid-template-columns: 20% 15% 15% 10% 10% 10% 10% 10%;
 	}
 
@@ -40,11 +41,11 @@
 		grid-row: 1;
 	}
 
-	.result{
+	#pops{
 		display: flex;
 	    flex-direction: column;
 	    margin: auto;
-	    margin-top: 8rem;
+	    margin-top: 9rem;
 	}
 
 	.generation{
@@ -115,10 +116,44 @@
     	font-size: 1rem;
 	}
 
-
-	[id^='pass_'], [id^='max_']{
+	.info>div{
 		grid-row: 2;
+		display: grid;
+		margin-top: 1rem;
 	}
+
+	.info>div>label{
+		font-size:0.7rem;
+		text-align: center;
+	}
+
+	.field1{
+		grid-column:2;
+	}
+
+	.field2{
+		grid-column:3;
+	}
+
+	.field3{
+		grid-column:4;
+	}
+
+	.field4{
+		grid-column:5;
+	}
+
+	.field5{
+		grid-column:6;
+	}
+
+	.field6{
+		grid-column:7;
+	}	
+
+
+
+
 </style>
 
 <body>
@@ -126,22 +161,64 @@
 	<div class="info" >
 
 		<h1>Genetic password generator</h1>
+
 		<button id="launch" onclick="launch()">Launch</button>
 		<a id="solution-link" href="#solution">
 			<button id="scroll" disabled>Scroll to solution</button >
 		</a>
 		<button id="relaunch" onclick="relaunch()" disabled>Repeat</button>
 
-		<input placeholder="Max generation amount" id="max_generation" type="number" value="1000">
-		<input placeholder="Number amount" id="pass_nums" type="number" value="2">
-		<input placeholder="Capital letter amount" id="pass_lettersBig" type="number" value="3">
-		<input placeholder="Special symbol amount" id="pass_symbols" type="number" value="3">
-		<input placeholder="Minimal fitness value" id="pass_fit" type="number" value="200">
-		<input placeholder="Mutation probability" id="pass_mutate" type="number" step="0.1" min="0" max="1" value="0.3">
+		<div class="field1">
+			<label for="max_generation">Max generation amount</label>
+			<input placeholder="Max generation amount"
+			id="max_generation"
+			type="number"
+			value="1000">
+		</div>
+
+		<div class="field2">
+			<label for="pass_nums">Min number amount</label>
+			<input placeholder="Number amount"
+			id="pass_nums"
+			type="number"
+			value="2">
+		</div>
+
+		<div class="field3">
+			<label for="pass_lettersBig">Min capital letter amount</label>
+			<input placeholder="Capital letter amount"
+			id="pass_lettersBig"
+			type="number"
+			value="3">
+		</div>
+
+		<div class="field4">
+			<label for="pass_symbols">Min special symbol amount</label>
+			<input placeholder="Special symbol amount"
+			id="pass_symbols"
+			type="number"
+			value="3">
+		</div>
+
+		<div class="field5">
+			<label for="pass_fit">Min fitness value</label>
+			<input placeholder="Minimal fitness value" 
+			id="pass_fit"
+			type="number"
+			value="200">
+		</div>
+
+		<div class="field6">
+			<label for="pass_mutate">Mutation probability(%)</label>
+			<input placeholder="Mutation probability"
+			id="pass_mutate"
+			type="number"
+			step="5" min="0" max="100" value="30">
+		</div>
 
 	</div>
 
-	<div id="pops" class="result">
+	<div id="pops">
 		
 	</div>
 

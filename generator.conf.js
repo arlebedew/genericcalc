@@ -50,7 +50,7 @@ conf = (function() {
 
     ) {
         max_generations     = generatio;
-        mutation_probability= mutatio;
+        mutation_probability= mutatio/100;
         nums                =numbers;
         big_let             =bigletters;
         syms                =symbols;
