@@ -60,6 +60,7 @@ function relaunch(){
 	has_solution=false;
 	limit=false;
 	scroll.disabled=true;
+	solution_rendered=false;
 	document.getElementById('scroll').disabled=true;
 	document.getElementById("pops").innerHTML = "";
 	launch();

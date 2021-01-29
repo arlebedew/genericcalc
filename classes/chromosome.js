@@ -94,6 +94,7 @@ class Chromosome{
 		if(results.size<8) return;
 		this.fitnessVal+= results.size*5;
 
+		this.fitnessVal+= results.letters*5;
 		this.fitnessVal+= results.numbers*5;
 		this.fitnessVal+= results.lettersBig*10;
 		this.fitnessVal+= results.symbols*10;
@@ -166,7 +167,11 @@ class Chromosome{
 		htmlOut+='<input class="chromosomeVal" value="'+ this.genesStr +'" disabled>';
 
 
-		if(this.is_solution) solutionId= "id='solution'";
+		if(this.is_solution&&!solution_rendered){
+
+			solution_rendered=true;
+			solutionId= "id='solution'";
+		}
 
 		return '<div '+solutionId+' class="chromosome">'+htmlOut+'</div>';
 	}
