@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Genetic password generator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style type="text/css">
+
+	html{
+	    font-family: "Cambria";
+		background-color: #dcd9d9;
+		letter-spacing: 2px;
+		height: 100%;
+		width:100%;
+		scroll-behavior: smooth;
+	}
+
+	body{
+		height: 100%;
+		width:100%;
+	}
+
+	.info{
+		display: grid;
+	    justify-content: center;
+	    word-break: break-all;
+	    grid-template-rows: 70% 30%;
+	    grid-template-columns: 20% 15% 15% 10% 10% 10% 10% 10%;
+	}
+
+	.info>h1{
+		font-variant-caps: all-petite-caps;
+		grid-column: 2/span 2;
+		grid-row: 1;
+	}
+
+	.result{
+		display: flex;
+	    flex-direction: column;
+	    margin: auto;
+	}
+
+	.generation{
+		display: flex;
+    	flex-direction: row;
+    	justify-content: center;
+    	margin-bottom: 1rem;
+	}
+
+	.generation>h3{
+		text-align: center;
+		margin-right:1rem;
+		-webkit-writing-mode: vertical-rl;
+		margin-left: 1rem;
+		font-size:1rem;
+	}
+	
+	.chromosomeVal{
+		background-color: transparent;
+	    border: none;
+	    font-family: 'Consolas';
+	    letter-spacing: 1px;
+	    font-size: 1rem;
+	    font-size: 80%;
+	    text-align: center;
+	}
+
+	.chromosome{
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    width: 13rem;
+	    border: 2px dashed #a09e9e;
+	    text-align: center;
+	}
+
+	.chromosome>h4{
+		margin: 2% 0;
+	}
+
+	#solution{
+		background-color: white;
+	}
+
+	#relaunch{
+		grid-column:6;
+		grid-row: 1;
+	}
+
+	#solution-link{
+		grid-column: 5;
+		grid-row: 1;
+	}
+
+	#launch{
+		grid-column: 4;
+		grid-row: 1;
+	
+	}
+
+	#solution-link>button{
+		height: 100%;
+    	width: 100%;
+	}
+
+	button{
+		font-family: Cambria;
+    	font-size: 1rem;
+	}
+
+
+	[id^='pass_'], [id^='max_']{
+		grid-row: 2;
+	}
+</style>
+
+<body>
+
+	<div class="info" >
+
+		<h1>Genetic password generator</h1>
+		<button id="launch" onclick="launch()">Launch</button>
+		<a id="solution-link" href="#solution">
+			<button id="scroll" disabled>Scroll to solution</button >
+		</a>
+		<button id="relaunch" onclick="relaunch()">Repeat</button>
+
+		<input placeholder="Max generation amount" id="max_generation" type="number" value="1000">
+		<input placeholder="Number amount" id="pass_nums" type="number" value="2">
+		<input placeholder="Capital letter amount" id="pass_lettersBig" type="number" value="3">
+		<input placeholder="Special symbol amount" id="pass_symbols" type="number" value="3">
+		<input placeholder="Minimal fitness value" id="pass_fit" type="number" value="200">
+		<input placeholder="Mutation probability" id="pass_mutate" type="number" step="0.1" min="0" max="1" value="0.3">
+
+	</div>
+
+	<div id="pops" class="result">
+		
+	</div>
+
+</body>
+
+<script type="text/javascript" src="generator.conf.js"></script>
+<script type="text/javascript" src="classes/population.js"></script>
+<script type="text/javascript" src="classes/gene.js"></script>
+<script type="text/javascript" src="classes/chromosome.js"></script>
+<script type="text/javascript" src="generator.js"></script>
+</html>
