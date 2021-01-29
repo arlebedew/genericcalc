@@ -1,5 +1,4 @@
 
-
 function launch(){
 
 	// Set configuration settings
@@ -16,6 +15,7 @@ function launch(){
 
 	// Update HTML
 	document.getElementById('launch').disabled=true;
+	document.getElementById('relaunch').disabled=false;
 	document.getElementById("pops")
 	.insertAdjacentHTML(
 		'beforeend',
@@ -49,6 +49,8 @@ function launch(){
 		alert('No solution found.');
 		document.getElementById('scroll').disabled=true;
 	}
+
+
 
 }
 
