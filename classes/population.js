@@ -81,13 +81,13 @@ class Population{
 
 	crossover(){
 
-		function cross(chr1, chr2){
+		function cross(chrA, chrB){
 
 			let newgenes= [],
 				crosspoint= conf.random.cross(),
-				newchomosize= (chr1.size_+chr2.size_)/2,
+				newsize= (chrA.size_+chrB.size_)/2, /* New Chromosome size */
 				devide_on=4,
-				numForUniform= Math.floor(newchomosize/devide_on),
+				numForUniform= Math.floor(newsize/devide_on),
 				lastgene1=0,
 				lastgene2=0,
 				to_add=0;
@@ -102,18 +102,18 @@ class Population{
 					let last= lastgene1;
 
 					for(var i=last; i<(last+numForUniform); i++){
-						if(newgenes.length==newchomosize) return;
+						if(newgenes.length==newsize) return;
 
-						if(chr1.gene[i]==undefined){
+						if(chrA.gene[i]==undefined){
 
-							if(chr2.gene[i]!=undefined){
+							if(chrB.gene[i]!=undefined){
 								lastgene2++;
-								newgenes.push(chr2.gene[i]);
+								newgenes.push(chrB.gene[i]);
 							}
 							
 						}else{
 							lastgene1++;
-							newgenes.push(chr1.gene[i]);
+							newgenes.push(chrA.gene[i]);
 						}
 
 					}
@@ -125,17 +125,17 @@ class Population{
 					let last= lastgene2;
 
 					for(let i=last; i<(last+numForUniform); i++){
-						if(newgenes.length==newchomosize) return;
-						if(chr2.gene[i]==undefined){
+						if(newgenes.length==newsize) return;
+						if(chrB.gene[i]==undefined){
 
-							if(chr1.gene[i]!=undefined){
+							if(chrA.gene[i]!=undefined){
 								lastgene1++;
-								newgenes.push(chr1.gene[i]);
+								newgenes.push(chrA.gene[i]);
 							}
 							
 						}else{
 							lastgene2++;
-							newgenes.push(chr2.gene[i]);
+							newgenes.push(chrB.gene[i]);
 						}
 
 					}
@@ -143,18 +143,18 @@ class Population{
 				}
 			}
 
-			to_add=newchomosize-newgenes.length;
+			to_add=newsize-newgenes.length;
 
-			if(chr1.size_>=chr2.size_){
+			if(chrA.size_>=chrB.size_){
 
 				for(let i=1; i<=to_add; i++){
-					newgenes.push(chr1.genes[chr1.size_-i]);
+					newgenes.push(chrA.genes[chrA.size_-i]);
 				}
 
 			}else{
 
 				for(let i=1; i<=to_add; i++){
-					newgenes.push(chr2.genes[chr2.size_-i]);
+					newgenes.push(chrB.genes[chrB.size_-i]);
 				}
 
 			}

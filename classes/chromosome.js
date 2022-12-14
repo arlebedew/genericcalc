@@ -1,15 +1,16 @@
 class Chromosome{
 
 
-	constructor(geno){
+	constructor(new_genes){
 
 		this.genes=[];
 		this.genesStr="";
 		this.size=0;
 		this.solution_found=false;
 
-		if(geno!=undefined){
-			this.genes=[...geno];
+		if(new_genes!=undefined){
+
+			this.genes=[...new_genes];
 
 			for(let i=0; i<conf.max.genes(); i++){
 
@@ -91,7 +92,7 @@ class Chromosome{
 		// Scoring
 		this.fitnessVal=0;
 
-		if(results.size<8) return;
+		if(results.size<5) return;
 		this.fitnessVal+= results.size*5;
 
 		this.fitnessVal+= results.letters*5;
