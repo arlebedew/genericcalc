@@ -70,7 +70,7 @@
 	.info>div>label{
 		grid-column: 1;
 		font-size:0.7rem;
-		text-align: center;
+		text-align: left;
 	}
 
 	input, select{
