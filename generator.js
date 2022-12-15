@@ -25,7 +25,9 @@ function launch(){
 	while(has_solution==false&&limit==false){
 
 		if(conf.max.generations()<=pop.age_){
-			alert('No solution found.');
+			alert('No solution found.\n'+
+				pop.age_+"    "+
+				"generations created.");
 			limit=true;
 			return;
 		}
@@ -46,7 +48,9 @@ function launch(){
 
 	}else{
 		
-		alert('No solution found.');
+		alert('No solution found.\n'+
+			pop.age_+"    "+
+			"generations created.");
 		document.getElementById('scroll').disabled=true;
 	}
 
