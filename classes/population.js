@@ -28,13 +28,10 @@ class Population{
 				dataforNext.chr,
 				dataforNext.a,
 				dataforNext.fit_a,
-				dataforNext.fit_min,
-				dataforNext.fit_max,
 				dataforNext.sol,
 				dataforNext.fit_avg
 		);
 
-		console.log(dataforNext);
 
 		this.generations.push(nextGeneration);
 

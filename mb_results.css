@@ -1,0 +1,40 @@
+
+#pops{
+	display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 22rem;
+}
+
+.generation{
+	display: grid;
+	justify-content: center;
+	margin-bottom: 1rem;
+    grid-auto-rows:auto;
+    grid-auto-columns:100%;
+}
+
+.generation>h3{
+	text-align: center;
+	font-size:1rem;
+}
+
+.chromosomeVal{
+	background-color: transparent;
+    border: none;
+    font-family: 'Consolas';
+    letter-spacing: 1px;
+    font-size: 1rem;
+    font-size: 80%;
+    text-align: center;
+}
+
+.chromosome{
+    display: inline-grid;
+    border: 2px dashed #a09e9e;
+    text-align: center;
+}
+
+#solution{
+	background-color: white;
+}

@@ -1,6 +1,8 @@
 
 function launch(){
 
+	let reply = false;
+
 	// Set configuration settings
 	conf.init(
 		document.getElementById("max_generation").value,
@@ -18,29 +20,33 @@ function launch(){
 
 	var pop= new Population();
 
-	console.log(pop.age_);
+	if(!has_solution){
+		for(var i = 0; i<conf.max.generations()-1; i++){
 
-	for(var i = 0; i<conf.max.generations()-1; i++){
+			if(has_solution){
+				document.getElementById('scroll').disabled=false;
+				break;
+			}else{
+				pop.next();
+			}
 
-		if(has_solution){
-			document.getElementById('scroll').disabled=false;
-			break;
-		}else{
-			pop.next();
 		}
-
 	}
 
 	if(!has_solution){
-		
-		alert('No solution found. Max generation amount reached.\n'+
+
+		reply = confirm('No solution found. Max generation amount reached.\n'+
 			pop.age_+"    "+
-			"generations created.");
+			"generations created.\n Do you want to retry?" );
+		
 		document.getElementById('scroll').disabled=true;
 		
 	}
 
+	conf.fitness.division();
 	document.getElementById("pops").innerHTML = pop.html();
+
+	if(reply) relaunch();
 
 }
 
@@ -51,8 +57,23 @@ function relaunch(){
 	limit=false;
 	scroll.disabled=true;
 	solution_rendered=false;
+    fitness_min = 0;
+    fitness_max = 0;
+    fitness_division = {};
+    divsdsd = 0;
 	document.getElementById('scroll').disabled=true;
 	document.getElementById("pops").innerHTML = "";
 	launch();
 
+}
+
+function typeAdjustments(select){
+
+	if(select.value == 1){
+		document.getElementById("pass_fit").value =200;
+	}
+
+	if(select.value == 2){
+		document.getElementById("pass_fit").value =50;
+	}
 }

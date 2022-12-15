@@ -86,7 +86,7 @@ class Chromosome{
 
 	fitness_(){
 
-		this.fitnessVal = conf.fitness(this.genesStr);
+		this.fitnessVal = conf.fitness.actual(this.genesStr);
 
 	}
 
@@ -150,7 +150,8 @@ class Chromosome{
 		let htmlOut= '<h4>Fitness: '+
 					this.fitnessVal+
 					'</h4>',
-			solutionId='';
+			solutionId='',
+			fitnessScoreClass = '';
 		
 		htmlOut+='<input class="chromosomeVal" value="'+ this.genesStr +'" disabled>';
 
@@ -161,7 +162,23 @@ class Chromosome{
 			solutionId= "id='solution'";
 		}
 
-		return '<div '+solutionId+' class="chromosome">'+htmlOut+'</div>';
+		
+
+        if(this.fitnessVal >= fitness_division.superhigh){
+        	fitnessScoreClass = "superhigh";
+        }else if(this.fitnessVal >= fitness_division.high){
+        	fitnessScoreClass = "high";
+        }else if(this.fitnessVal >= fitness_division.avg){
+        	fitnessScoreClass = "average";
+        }else if(this.fitnessVal >= fitness_division.low){
+        	fitnessScoreClass = "low";
+        }else if(this.fitnessVal >= fitness_division.superlow){
+        	fitnessScoreClass = "superlow";
+        }else if(this.fitnessVal < fitness_division.superlow){
+        	fitnessScoreClass = "superlow";
+        }
+
+		return '<div '+solutionId+' class="chromosome '+fitnessScoreClass+'">'+htmlOut+'</div>';
 	}
 
 }

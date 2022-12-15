@@ -2,9 +2,13 @@
 <html>
 <head>
 	<title>Genetic password generator</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="main.css">
+	<meta name="viewport" content="initial-scale=1.0">
+	<link rel="stylesheet" media="(min-width: 400px)" href="main.css">
+	<link rel="stylesheet" media="(min-width: 400px)" href="results.css">
+	<link rel="stylesheet" media="(max-width: 400px)" href="mb_main.css" />
+	<link rel="stylesheet" media="(max-width: 400px)" href="mb_results.css" />
 	<link rel="stylesheet" href="fitness.css">
+
 </head>
 
 <body>
@@ -15,9 +19,11 @@
 		<h1>Genetic password generator</h1>
 
 		<button id="launch" onclick="launch()">Launch</button>
+
 		<a id="solution-link" href="#solution">
 			<button id="scroll" disabled>Scroll to solution</button >
 		</a>
+
 		<button id="relaunch" onclick="relaunch()" disabled>Repeat</button>
 
 		<div class="field1">
@@ -68,9 +74,9 @@
 			step="5" min="0" max="100" value="30">
 		</div>
 
-		<div>
+		<div class="field7">
 			<label for="fitnessMode">Select fitness function</label>
-			<select id="fitnessMode">
+			<select id="fitnessMode" onchange="typeAdjustments(this)">
 				<option value="1" >Custom formula</option>
 				<option value="2" >Password entropy formula</option>
 			</select>			

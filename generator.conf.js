@@ -1,5 +1,8 @@
 var has_solution=false,
     solution_rendered=false,
+    fitness_min = 0,
+    fitness_max = 0,
+    fitness_division = {},
 conf = (function() {
 
     "use strict";
@@ -38,7 +41,10 @@ conf = (function() {
             cross:      getCrossPoint
         },
         analize:        analizeChromosomeValue,
-        fitness:        actualFitness
+        fitness: {
+            actual:     actualFitness,
+            division:   fitnessDivision
+        }
 
     };
 
@@ -192,10 +198,29 @@ conf = (function() {
             }
 
             fitnessScore = analizedString.size * Math.log(possibleSymbols) / Math.log(2);
+            fitnessScore = Math.round(fitnessScore * 1000) / 1000;
 
         }
 
         return fitnessScore;
+
+    }
+
+    function fitnessDivision(){
+    // Generate fitness score divison:
+    // Based on MIN and MAX fitness
+    // other values will be generated for
+    // gene coloring.
+
+        let avg=fitness_max/2;
+
+        fitness_division =  {
+            superhigh:  fitness_max,
+            superlow:   fitness_min,
+            avg:        avg,    
+            low:        avg/2,
+            high:       avg + avg/2
+        };
 
     }
 

@@ -1,7 +1,7 @@
 class Generation{
 
 	constructor(){
-		
+
 	}
 
 	first(){
@@ -9,8 +9,6 @@ class Generation{
 		this.chromosomes=[];
 		this.age=1;
 		this.fitness_avg=0;
-		this.fitness_min=0;
-		this.fitness_max=0;
 
 		this.solution={
 			generation:0,
@@ -39,8 +37,6 @@ class Generation{
 		chr,
 		a,
 		fit_a,
-		fit_min,
-		fit_max,
 		sol,
 		fit_avg
 	){
@@ -51,12 +47,8 @@ class Generation{
 		this.chromosomes=chr;
 		this.age=a;
 		this.fitness_avg=fit_a;
-		this.fitness_min=fit_min;
-		this.fitness_max=fit_max;
 		this.solution=sol;
 		this.fitness_avg = fit_avg;
-
-		console.log(chr);
 
 		this.age++;
 		this.selection();
@@ -87,8 +79,6 @@ class Generation{
 			chr: 		this.chromosomes,
 			a: 			this.age,
 			fit_a: 		this.fitness_avg,
-			fit_min: 	this.fitness_min,
-			fit_max: 	this.fitness_max,
 			sol: 		this.solution,
 			fit_avg: 	this.fitness_avg
 		}
@@ -96,24 +86,6 @@ class Generation{
 
 	get age_(){
 		return this.age;
-	}
-
-	get fitnessDivision(){
-	// Generate fitness score divison:
-	// Based on MIN and MAX fitness
-	// other values will be generated for
-	// gene coloring.
-
-		let avg=this.fitness_max/2;
-
-		return {
-			superhigh: 	this.fitness_max,
-			superlow: 	this.fitness_min,
-			avg: 		avg,	
-			low: 		avg/2,
-			high: 		avg + avg/2
-		};
-
 	}
 
 	best(chromo){
@@ -126,14 +98,14 @@ class Generation{
 
 	fitnessScores(chr_fit){
 
-		if(chr_fit>this.fitness_max) this.fitness_max = chr_fit;
-		if(this.fitness_min==0){
+		if(chr_fit>fitness_max) fitness_max = chr_fit;
+		if(fitness_min==0){
 
-			this.fitness_min = chr_fit;
+			fitness_min = chr_fit;
 		}else{
 
-			if(chr_fit<this.fitness_min){
-				this.fitness_min = chr_fit;
+			if(chr_fit<fitness_min){
+				fitness_min = chr_fit;
 			}
 		}
 

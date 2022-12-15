@@ -1,0 +1,49 @@
+
+#pops{
+	display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 13rem;
+}
+
+.generation{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+.generation>h3{
+	text-align: center;
+	margin-right:1rem;
+	-webkit-writing-mode: vertical-rl;
+	margin-left: 1rem;
+	font-size:1rem;
+}
+
+.chromosomeVal{
+	background-color: transparent;
+    border: none;
+    font-family: 'Consolas';
+    letter-spacing: 1px;
+    font-size: 1rem;
+    font-size: 80%;
+    text-align: center;
+}
+
+.chromosome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10%;
+    border: 2px dashed #a09e9e;
+    text-align: center;
+}
+
+.chromosome>h4{
+	margin: 2% 0;
+}
+
+#solution{
+	background-color: white;
+}
