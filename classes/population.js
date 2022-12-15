@@ -17,6 +17,12 @@ class Population{
 
 			this.chromosomes.push(new Chromosome());
 			this.fitness_avg+=this.chromosomes[i].fitness;
+			this.chromosomes[i].check();
+
+			if(this.chromosomes[i].is_solution){
+
+				this.best(this.chromosomes[i]);
+			}
 		}
 
 		this.fitness_avg/= conf.max.chromosomes();
@@ -37,7 +43,7 @@ class Population{
 	next(){
 	// Makes next generation
 	// manages random mutation
-	// manages crossover point
+	// manages crossover 
 
 		this.age++;
 		this.selection();

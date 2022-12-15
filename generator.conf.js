@@ -17,7 +17,8 @@ conf = (function() {
         nums=0,
         big_let=0,
         syms=0,
-        fit=0;
+        fit=0,
+        fitnessFunMode = 1;
 
     return {
         init:            initialize,
@@ -37,7 +38,8 @@ conf = (function() {
             mutate:     getMutate,
             cross:      getCrossPoint
         },
-        analize:        analizeChromosomeValue
+        analize:        analizeChromosomeValue,
+        fitness:        actualFitness
 
     };
 
@@ -47,7 +49,8 @@ conf = (function() {
         bigletters,
         symbols,
         fitness,
-        mutatio
+        mutatio,
+        fitMode
 
     ) {
         max_generations     = generatio;
@@ -56,6 +59,7 @@ conf = (function() {
         big_let             =bigletters;
         syms                =symbols;
         fit                 =fitness;
+        fitnessFunMode      =fitMode;
     }
   
 
@@ -144,6 +148,60 @@ conf = (function() {
             size:           value.length 
 
         };
+    }
+
+    function actualFitness(
+        value
+    ){
+        //console.log(JSON.stringify(analizeChromosomeValue(value)));
+        let analizedString = analizeChromosomeValue(value),
+            fitnessScore = 0;
+
+        if(fitnessFunMode == 1){
+            console.log('LAT');
+
+            if(analizedString.size<5) return;
+            fitnessScore+= analizedString.size*5;
+
+            fitnessScore+= analizedString.letters*5;
+            fitnessScore+= analizedString.numbers*5;
+            fitnessScore+= analizedString.lettersBig*10;
+            fitnessScore+= analizedString.symbols*10;
+
+            if(analizedString.dublicates) fitnessScore-=analizedString.dublicates_amount*15;
+
+        }else if(fitnessFunMode == 2){
+            console.log('VIA');
+
+            let specialSymbolCount = "@#$%^&*~()_+\-=\[\]{};':\"\\|,.<>\/?".length,
+                letterCount = "qwertyuiopasdfghjklzxcvbnm".length,
+                numberCount = "1234567890".length,
+                possibleSymbols = 0;
+            // where N is the number of possible symbols and passwordSize is the number of symbols in the password.
+            // H is measured in bits.
+
+            if(analizedString.letters > 0){
+                possibleSymbols+= letterCount;
+            }
+
+            if(analizedString.lettersBig > 0){
+                possibleSymbols+= letterCount;
+            }
+
+            if(analizedString.numbers > 0){
+                possibleSymbols+= numberCount;
+            }
+
+            if(analizedString.symbols > 0){
+                possibleSymbols+= specialSymbolCount;
+            }
+
+            fitnessScore = analizedString.size * Math.log(possibleSymbols) / Math.log(2);
+
+        }
+
+        return fitnessScore;
+
     }
 
 })();

@@ -74,7 +74,6 @@ class Chromosome{
 		let results= conf.analize(this.genesStr);
 
 		if(
-			results.size>=8&&
 			results.numbers>=conf.max.nums()&&
 			results.lettersBig>=conf.max.bletters()&&
 			results.symbols>=conf.max.symbol()&&
@@ -87,20 +86,8 @@ class Chromosome{
 
 	fitness_(){
 
-		let results= conf.analize(this.genesStr);
+		this.fitnessVal = conf.fitness(this.genesStr);
 
-		// Scoring
-		this.fitnessVal=0;
-
-		if(results.size<5) return;
-		this.fitnessVal+= results.size*5;
-
-		this.fitnessVal+= results.letters*5;
-		this.fitnessVal+= results.numbers*5;
-		this.fitnessVal+= results.lettersBig*10;
-		this.fitnessVal+= results.symbols*10;
-
-		if(results.dublicates) this.fitnessVal-=results.dublicates_amount*15;
 	}
 
 	mutate(){

@@ -8,7 +8,8 @@ function launch(){
         document.getElementById("pass_lettersBig").value,
         document.getElementById("pass_symbols").value,
         document.getElementById("pass_fit").value,
-        document.getElementById("pass_mutate").value
+        document.getElementById("pass_mutate").value,
+        document.getElementById("fitnessMode").value
     );
 
 	var pop= new Population();
@@ -22,24 +23,28 @@ function launch(){
 		pop.html()
 	);
 
-	while(has_solution==false&&limit==false){
+	
+	// In case when 1st population don't have solution already
+	if(!has_solution){
 
-		if(conf.max.generations()<=pop.age_){
-			alert('No solution found.\n'+
-				pop.age_+"    "+
-				"generations created.");
-			limit=true;
-			return;
+		while(has_solution==false&&limit==false){
+
+			if(conf.max.generations()<=pop.age_){
+				alert('No solution found.\n'+
+					pop.age_+"    "+
+					"generations created.");
+				limit=true;
+				return;
+			}
+
+			pop.next();
+
+			document.getElementById("pops")
+			.insertAdjacentHTML(
+				'beforeend',
+				pop.html()
+			);
 		}
-
-		pop.next();
-
-		document.getElementById("pops")
-		.insertAdjacentHTML(
-			'beforeend',
-			pop.html()
-		);
-
 	}
 
 	if(has_solution){
