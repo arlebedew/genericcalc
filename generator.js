@@ -12,56 +12,35 @@ function launch(){
         document.getElementById("fitnessMode").value
     );
 
-	var pop= new Population();
-
 	// Update HTML
 	document.getElementById('launch').disabled=true;
 	document.getElementById('relaunch').disabled=false;
-	document.getElementById("pops")
-	.insertAdjacentHTML(
-		'beforeend',
-		pop.html()
-	);
 
-	
-	// In case when 1st population don't have solution already
-	if(!has_solution){
+	var pop= new Population();
 
-		while(has_solution==false&&limit==false){
+	console.log(pop.age_);
 
-			if(conf.max.generations()<=pop.age_){
-				alert('No solution found.\n'+
-					pop.age_+"    "+
-					"generations created.");
-				limit=true;
-				break;
-			}else{
-				if(!has_solution) pop.next();
-			}
+	for(var i = 0; i<conf.max.generations()-1; i++){
 
-			document.getElementById("pops")
-			.insertAdjacentHTML(
-				'beforeend',
-				pop.html()
-			);
+		if(has_solution){
+			document.getElementById('scroll').disabled=false;
+			break;
+		}else{
+			pop.next();
 		}
+
 	}
 
-	if(has_solution){
-
-		document.getElementById('scroll').disabled=false;
-
-	}else{
+	if(!has_solution){
 		
-		alert('No solution found.\n'+
+		alert('No solution found. Max generation amount reached.\n'+
 			pop.age_+"    "+
 			"generations created.");
 		document.getElementById('scroll').disabled=true;
+		
 	}
 
-	
-
-
+	document.getElementById("pops").innerHTML = pop.html();
 
 }
 
