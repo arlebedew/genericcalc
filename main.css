@@ -1,0 +1,143 @@
+	html{
+	    font-family: "Cambria";
+		background-color: #dcd9d9;
+		letter-spacing: 2px;
+		height: 100%;
+		width:100%;
+		scroll-behavior: smooth;
+	}
+
+	body{
+		height: 100%;
+		width:100%;
+		margin: 0;
+	}
+
+	.info{
+	    display: grid;
+	    justify-content: center;
+	    position: fixed;
+	    background-color: #dcd9d9;
+	    width: 100%;
+	    border-bottom: 2px solid black;
+	    top: 0;
+	    word-break: break-all;
+	    grid-template-rows: 60% 40%;
+	    grid-template-columns: 20% 15% 15% 10% 10% 10% 10% 10%;
+	}
+
+	.info>h1{
+		font-variant-caps: all-petite-caps;
+		grid-column: 2/span 2;
+		grid-row: 1;
+	}
+
+	#pops{
+		display: flex;
+	    flex-direction: column;
+	    margin: auto;
+	    margin-top: 9rem;
+	}
+
+	.generation{
+		display: flex;
+    	flex-direction: row;
+    	justify-content: center;
+    	margin-bottom: 1rem;
+	}
+
+	.generation>h3{
+		text-align: center;
+		margin-right:1rem;
+		-webkit-writing-mode: vertical-rl;
+		margin-left: 1rem;
+		font-size:1rem;
+	}
+	
+	.chromosomeVal{
+		background-color: transparent;
+	    border: none;
+	    font-family: 'Consolas';
+	    letter-spacing: 1px;
+	    font-size: 1rem;
+	    font-size: 80%;
+	    text-align: center;
+	}
+
+	.chromosome{
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    width: 13rem;
+	    border: 2px dashed #a09e9e;
+	    text-align: center;
+	}
+
+	.chromosome>h4{
+		margin: 2% 0;
+	}
+
+	#solution{
+		background-color: white;
+	}
+
+	#relaunch{
+		grid-column:6;
+		grid-row: 1;
+	}
+
+	#solution-link{
+		grid-column: 5;
+		grid-row: 1;
+	}
+
+	#launch{
+		grid-column: 4;
+		grid-row: 1;
+	
+	}
+
+	#solution-link>button{
+		height: 100%;
+    	width: 100%;
+	}
+
+	button{
+		font-family: Cambria;
+    	font-size: 1rem;
+	}
+
+	.info>div{
+		grid-row: 2;
+		display: grid;
+		margin-top: 1rem;
+	}
+
+	.info>div>label{
+		font-size:0.7rem;
+		text-align: center;
+	}
+
+	.field1{
+		grid-column:2;
+	}
+
+	.field2{
+		grid-column:3;
+	}
+
+	.field3{
+		grid-column:4;
+	}
+
+	.field4{
+		grid-column:5;
+	}
+
+	.field5{
+		grid-column:6;
+	}
+
+	.field6{
+		grid-column:7;
+	}	

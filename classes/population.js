@@ -6,6 +6,9 @@ class Population{
 		this.chromosomes=[];
 		this.age=1;
 		this.fitness_avg=0;
+		this.fitness_min=0;
+		this.fitness_max=0;
+
 		this.solution={
 			generation:0,
 			string:"",
@@ -18,6 +21,7 @@ class Population{
 			this.chromosomes.push(new Chromosome());
 			this.fitness_avg+=this.chromosomes[i].fitness;
 			this.chromosomes[i].check();
+			this.fitnessScores(this.chromosomes[i].fitness);
 
 			if(this.chromosomes[i].is_solution){
 
@@ -30,6 +34,24 @@ class Population{
 
 	get age_(){
 		return this.age;
+	}
+
+	get fitnessDivision(){
+	// Generate fitness score divison:
+	// Based on MIN and MAX fitness
+	// other values will be generated for
+	// gene coloring.
+
+		let avg=this.fitness_max/2;
+
+		return {
+			superhigh: 	this.fitness_max,
+			superlow: 	this.fitness_min,
+			avg: 		avg,	
+			low: 		avg/2,
+			high: 		avg + avg/2
+		};
+
 	}
 
 	best(chromo){
@@ -57,6 +79,7 @@ class Population{
 			this.chromosomes[i].fitness_();
 			this.fitness_avg+=this.chromosomes[i].fitness;
 			this.chromosomes[i].check();
+			this.fitnessScores(this.chromosomes[i].fitness);
 
 			if(this.chromosomes[i].is_solution){
 
@@ -65,6 +88,21 @@ class Population{
 		}
 
 		this.fitness_avg/= conf.max.chromosomes();
+
+	}
+
+	fitnessScores(chr_fit){
+
+		if(chr_fit>this.fitness_max) this.fitness_max = chr_fit;
+		if(this.fitness_min==0){
+
+			this.fitness_min = chr_fit;
+		}else{
+
+			if(chr_fit<this.fitness_min){
+				this.fitness_min = chr_fit;
+			}
+		}
 
 	}
 

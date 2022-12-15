@@ -34,10 +34,10 @@ function launch(){
 					pop.age_+"    "+
 					"generations created.");
 				limit=true;
-				return;
+				break;
+			}else{
+				if(!has_solution) pop.next();
 			}
-
-			pop.next();
 
 			document.getElementById("pops")
 			.insertAdjacentHTML(
@@ -58,6 +58,8 @@ function launch(){
 			"generations created.");
 		document.getElementById('scroll').disabled=true;
 	}
+
+	
 
 
 

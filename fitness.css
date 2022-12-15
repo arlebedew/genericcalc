@@ -1,0 +1,19 @@
+	.superlow{
+		border: 3px solid #ff0000 !important;
+	}
+
+	.low{
+		border: 3px solid #ff8b00 !important;
+	}
+
+	.average{
+		border: 3px solid #ffe900 !important;
+	}
+
+	.high{
+		border: 3px solid #93ff00 !important;
+	}
+
+	.superhigh{
+		border: 3px solid #1fd511 !important;
+	}

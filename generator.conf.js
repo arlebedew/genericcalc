@@ -1,6 +1,7 @@
 var has_solution=false,
     limit=false,
     solution_rendered=false,
+    gen_cnt= 0,
 conf = (function() {
 
     "use strict";
