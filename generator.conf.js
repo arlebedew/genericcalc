@@ -158,7 +158,6 @@ conf = (function() {
             fitnessScore = 0;
 
         if(fitnessFunMode == 1){
-            console.log('LAT');
 
             if(analizedString.size<5) return;
             fitnessScore+= analizedString.size*5;
@@ -171,14 +170,11 @@ conf = (function() {
             if(analizedString.dublicates) fitnessScore-=analizedString.dublicates_amount*15;
 
         }else if(fitnessFunMode == 2){
-            console.log('VIA');
 
             let specialSymbolCount = "@#$%^&*~()_+\-=\[\]{};':\"\\|,.<>\/?".length,
                 letterCount = "qwertyuiopasdfghjklzxcvbnm".length,
                 numberCount = "1234567890".length,
                 possibleSymbols = 0;
-            // where N is the number of possible symbols and passwordSize is the number of symbols in the password.
-            // H is measured in bits.
 
             if(analizedString.letters > 0){
                 possibleSymbols+= letterCount;
